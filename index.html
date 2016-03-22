@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>現在地のお天気情報</title>
+	<script type="text/javascript">
+		function startFunc(){
+			if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(successCallback,errorCallback);
+				} else {
+				document.getElementById("geo").innerHTML =  "位置情報の取得に失敗しました";
+				}
+			}
+		function successCallback(position) {
+			//成功したときの処理
+			latitude = position.coords.latitude;
+			longitude = position.coords.longitude;
+
+			// 取得した緯度経度を渡
+			document.getElementById("latitude").innerHTML = latitude;
+			document.getElementById("longitude").innerHTML = longitude;
+
+			var httpObj = new XMLHttpRequest();
+			// openweathermapからJSONデータ取得する
+			httpObj.open("GET", "http://api.openweathermap.org/data/2.5/forecast/daily/?units=metric&lat="+latitude+"&lon="+longitude+"&APPID=c8c6e974eece28fbc750a7799cea60c5&cnt=7", true);
+			httpObj.onload = function(){
+				var data = JSON.parse(this.responseText);	// JSON形式データを変換
+				var weatherIcon = data.list[0].weather[0].icon;	//icon取得
+				var weatherMain = data.list[0].weather[0].main;	//天気取得
+				document.getElementById("weatherIcon").src = "http://openweathermap.org/img/w/"+weatherIcon+".png";
+				document.getElementById("weatherMain").innerHTML = weatherMain;
+			}
+			httpObj.send(null);
+		}
+		function errorCallback(error) {
+			//失敗のときの処理
+			document.getElementById("geo").innerHTML = 'エラーが発生しました';
+		}
+	</script>
+	<style type="text/css">
+		.wetherList {
+			padding: 0;
+			border: solid 1px #f6f6f6;
+			width: auto;
+		}
+		#weatherIcon {
+			padding: 0;
+			width: 100%;
+		}
+		#weatherMain {
+			padding: 8px;
+		}
+	</style>
+</head>
+<body onload="startFunc()" style="background-color: #81DAF5;">
+	<div id="geo">
+		<div style="display: none;">
+			緯度：<span id="latitude"></span><br />
+			経度：<span id="longitude"></span><br />
+		</div>
+		<table class="wetherList">
+			<tr>
+				<td><img id="weatherIcon" src="" alt="お天気アイコン"></td>
+			</tr>
+			<tr>
+				<td><div id="weatherMain"></div></td>
+			</tr>
+		</table>
+	</div>
+
+	<script src="./dist/bundle.js"></script>
+</body>
+</html>

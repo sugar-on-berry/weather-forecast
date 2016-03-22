@@ -1,0 +1,11 @@
+# bower.jsonがあれば「bower install」ですべて取得できるため除外
+bower_components
+
+# package.jsonがあれば「npm install」ですべて取得できるため除外
+node_modules
+
+# tsd.jsonがあれば「tsd reinstall」ですべて取得できるため除外
+src/typings
+
+# gulpを実行すれば自動的に生成されるため除外
+dist

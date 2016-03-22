@@ -1,0 +1,21 @@
+{
+  "name": "weather-forecast",
+  "description": "TypeScriptで天気予報を返すサンプルです",
+  "main": "index.js",
+  "authors": [
+    "HarukaOkumura <okumura_haruka@sirok.co.jp>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/sugar-on-berry/weather-forecast",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0"
+  }
+}

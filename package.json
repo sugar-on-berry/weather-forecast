@@ -1,0 +1,26 @@
+{
+  "name": "weather-forecast",
+  "version": "1.0.0",
+  "description": "TypeScriptで天気予報を返すサンプルです",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sugar-on-berry/weather-forecast.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sugar-on-berry/weather-forecast/issues"
+  },
+  "homepage": "https://github.com/sugar-on-berry/weather-forecast#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^2.11.0",
+    "gulp-webpack": "^1.5.0",
+    "ts-loader": "^0.8.1",
+    "webpack": "^1.12.13"
+  }
+}
